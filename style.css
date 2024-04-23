@@ -216,9 +216,23 @@ section {
 /* BUTTONS */
 
 .btn-container {
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+
+#projects {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+
+#projects::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 5px;
 }
 
 .btn {
@@ -268,6 +282,12 @@ section {
   margin-bottom: 4rem;
 }
 
+@media (max-width: 1268px) {
+  #about {
+    padding-top: 200px;
+  }
+
+}
 
 .about-containers {
   gap: 2rem;
