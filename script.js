@@ -29,7 +29,7 @@ const projectsContainer = document.getElementById('projects');
 let scrollSpeed = 18;
 let scrollDirection = 1;
 const scrollInterval = 100;
-let scrollIntervalId; // Declare with let to allow reassignment
+let scrollIntervalId;
 
 function autoScrollProjects() {
   if (projectsContainer.scrollLeft >= projectsContainer.scrollWidth - projectsContainer.clientWidth) {
@@ -41,13 +41,28 @@ function autoScrollProjects() {
   projectsContainer.scrollLeft += scrollSpeed * scrollDirection;
 }
 
-scrollIntervalId = setInterval(autoScrollProjects, scrollInterval); // Assign initially
+scrollIntervalId = setInterval(autoScrollProjects, scrollInterval);
 
 projectsContainer.addEventListener('mouseenter', () => {
   clearInterval(scrollIntervalId);
 });
 
 projectsContainer.addEventListener('mouseleave', () => {
-  // Reassign scrollIntervalId using let
   scrollIntervalId = setInterval(autoScrollProjects, scrollInterval);
 });
+
+let text = " Hello, I'm            ";
+let index = 0;
+const helloText = document.getElementById("helloText");
+
+function typeWriter() {
+  helloText.innerHTML += text.charAt(index);
+  index++;
+  if (index === text.length) {
+    index = 0;
+    helloText.innerHTML = "&nbsp";
+  }
+  setTimeout(typeWriter, 250);
+}
+
+typeWriter();
