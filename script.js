@@ -43,13 +43,3 @@ function autoScrollProjects() {
 }
 
 const scrollIntervalId = setInterval(autoScrollProjects, scrollInterval);
-
-
-projectsContainer.addEventListener('mouseenter', () => {
-  clearInterval(scrollIntervalId);
-});
-
-
-projectsContainer.addEventListener('mouseleave', () => {
-  scrollIntervalId = setInterval(autoScrollProjects, scrollInterval);
-});
