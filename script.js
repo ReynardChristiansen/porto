@@ -51,18 +51,35 @@ projectsContainer.addEventListener('mouseleave', () => {
   scrollIntervalId = setInterval(autoScrollProjects, scrollInterval);
 });
 
-let text = " Hello, I'm            ";
+let text = ["Hello, I am     ", "こんにちは、私は     ", "Hallo, ich bin     ", "저는     "];
 let index = 0;
+let hapus = 0;
+let currentIndex = 0;
 const helloText = document.getElementById("helloText");
 
 function typeWriter() {
-  helloText.innerHTML += text.charAt(index);
-  index++;
-  if (index === text.length) {
-    index = 0;
-    helloText.innerHTML = "&nbsp";
+  if (hapus === 0) {
+    helloText.innerHTML += text[currentIndex].charAt(index);
+    index++;
+    if (index === text[currentIndex].length) {
+      index = 0;
+      hapus = 1;
+    }
+  } else {
+    let newText = helloText.innerHTML.slice(0, -1);
+    if(newText.length == 0){
+      newText = "&nbsp";
+    }
+    helloText.innerHTML = newText ;
+
+    if (newText === "&nbsp" ) {
+      hapus = 0;
+      currentIndex = (currentIndex + 1) % text.length;
+
+    }
   }
-  setTimeout(typeWriter, 250);
+
+  setTimeout(typeWriter, 300);
 }
 
 typeWriter();
