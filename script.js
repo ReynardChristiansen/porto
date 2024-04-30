@@ -33,11 +33,17 @@ let scrollIntervalId;
 
 function autoScrollProjects() {
   if (projectsContainer.scrollLeft >= projectsContainer.scrollWidth - projectsContainer.clientWidth) {
-    scrollDirection = -1;
+    setTimeout(() => {
+      scrollDirection = -1;
+    }, 1400);
+    
   } else if (projectsContainer.scrollLeft <= 0) {
-    scrollDirection = 1;
+    setTimeout(() => {
+      scrollDirection = 1;
+    }, 1400);
+    
   }
-
+  
   projectsContainer.scrollLeft += scrollSpeed * scrollDirection;
 }
 
